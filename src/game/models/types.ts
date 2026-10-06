@@ -321,6 +321,8 @@ export interface GameState {
   deathAge?: number;
   
   newsHistory: NewsItem[];
+
+  netWorthHistory: number[];
   
   version: number;
 }

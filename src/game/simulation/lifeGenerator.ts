@@ -121,9 +121,13 @@ export function generateStartingLife(name: string, hometown: string, customSeed?
     isAlive: true,
     
     newsHistory: [],
+
+    netWorthHistory: [],
     
     version: GAME_VERSION,
   };
+
+  state.netWorthHistory = [calculateNetWorth(state)];
 
   if (calculateNetWorth(state) > 0) {
     const alreadySolvent = state.milestones.find(item => item.id === 'positive_net_worth');

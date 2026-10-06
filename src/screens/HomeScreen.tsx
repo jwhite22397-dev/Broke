@@ -46,6 +46,7 @@ export function HomeScreen() {
             )}
           </div>
         </div>
+        <NetWorthChart values={gameState.netWorthHistory} />
       </div>
 
       {/* Stats Grid */}
@@ -189,6 +190,34 @@ export function HomeScreen() {
         </button>
       </div>
     </div>
+  );
+}
+
+function NetWorthChart({ values }: { values: number[] }) {
+  if (values.length < 2) return null;
+  const width = 320;
+  const height = 56;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const span = max - min || 1;
+  const points = values.map((value, index) => {
+    const x = (index / (values.length - 1)) * width;
+    const y = height - ((value - min) / span) * (height - 4) - 2;
+    return `${x},${y}`;
+  }).join(' ');
+  const rising = values[values.length - 1]! >= values[0]!;
+
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-14 mt-3" role="img" aria-label="Net worth over time">
+      <polyline
+        fill="none"
+        stroke={rising ? '#22c55e' : '#f87171'}
+        strokeWidth="3"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        points={points}
+      />
+    </svg>
   );
 }
 

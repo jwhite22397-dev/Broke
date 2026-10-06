@@ -159,6 +159,9 @@ function migrateState(state: GameState, fromVersion: number): GameState | null {
     if (!migrated.majorDecisions) {
       migrated.majorDecisions = [];
     }
+    if (!migrated.netWorthHistory) {
+      migrated.netWorthHistory = [];
+    }
   }
   
   return migrated;

@@ -217,6 +217,10 @@ export function simulateMonth(state: GameState): MonthResult {
   
   const netCashFlow = income.total - livingExpenses - debtPaid - repairCostPaid;
   const netWorthAfter = calculateNetWorth(state);
+  state.netWorthHistory.push(netWorthAfter);
+  if (state.netWorthHistory.length > 1200) {
+    state.netWorthHistory = state.netWorthHistory.slice(-1200);
+  }
   
   state.currentSeed = rng.getSeed();
   
