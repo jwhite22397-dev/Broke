@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  --color-broke-bg: #0f172a;
+  --color-broke-card: #1e293b;
+  --color-broke-border: #334155;
+  --color-broke-text: #f8fafc;
+  --color-broke-muted: #94a3b8;
+  --color-broke-accent: #3b82f6;
+  --color-broke-success: #22c55e;
+  --color-broke-warning: #f59e0b;
+  --color-broke-danger: #ef4444;
+  --color-broke-purple: #a855f7;
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    background-color: var(--color-slate-900);
+    color: var(--color-slate-100);
+    font-family: var(--font-sans);
+    overscroll-behavior: none;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-slate-800);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-slate-600);
+    border-radius: 9999px;
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--color-slate-800);
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--color-slate-700);
+  }
+  
+  .card-dark {
+    background-color: var(--color-slate-900);
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--color-slate-700);
+  }
+  
+  .btn {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 200ms;
+  }
+  
+  .btn:active {
+    transform: scale(0.95);
+  }
+  
+  .btn-primary {
+    background-color: var(--color-blue-600);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-blue-500);
+  }
+  
+  .btn-secondary {
+    background-color: var(--color-slate-700);
+    color: var(--color-slate-100);
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--color-slate-600);
+  }
+  
+  .btn-success {
+    background-color: var(--color-green-600);
+    color: white;
+  }
+  
+  .btn-success:hover {
+    background-color: var(--color-green-500);
+  }
+  
+  .btn-danger {
+    background-color: var(--color-red-600);
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: var(--color-red-500);
+  }
+  
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-slate-300);
+  }
+  
+  .btn-ghost:hover {
+    background-color: var(--color-slate-800);
+  }
+  
+  .stat-card {
+    background-color: color-mix(in srgb, var(--color-slate-800) 50%, transparent);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-slate-700) 50%, transparent);
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: colors 200ms;
+  }
+  
+  .nav-item-active {
+    background-color: var(--color-slate-800);
+    color: var(--color-blue-400);
+  }
+  
+  .progress-bar {
+    height: 0.5rem;
+    background-color: var(--color-slate-700);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: all 500ms;
+  }
+}
+
+@keyframes valueUp {
+  0% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes valueDown {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-value-up {
+  animation: valueUp 0.5s ease-out;
+}
+
+.animate-value-down {
+  animation: valueDown 0.5s ease-out;
+}
